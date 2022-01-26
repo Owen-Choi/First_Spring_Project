@@ -11,7 +11,13 @@ import java.util.Optional;
 // 그래야 기획자가 "회원가입 쪽 이상해요"할때 일대일로 매칭돼서 찾을 수 있기 때문이라고 한다.
 // ** ctrl + shift + t 단축키를 이용하여 현재 클래스와 매칭되는 테스트 클래스를 바로 만들 수 있다. **
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    // 외부에서 이렇게 값을 받아서 동작하게 하는 것을 D.I라고 한다.
+    // 이렇게 하는 이유는 테스트 코드에서 같은 memberRepository를 쓰기 위함이라고 한다.
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     public long join(Member member) {
         // 같은 이름을 가지는 회원은 가입할 수 없다.
@@ -30,7 +36,7 @@ public class MemberService {
         // 자매품으로는 result.orElseGet()이 있다.
         // 또한 굳이 result로 저장 안하고 memberRepository.findByName(member.getName())에서 바로 사용해도 된다.
         result.ifPresent(m -> {
-                throw new IllegalStateException("already present member");
+                throw new IllegalStateException("이미 존재하는 회원입니다.");
         });
     }
     public List<Member> findMembers() {
