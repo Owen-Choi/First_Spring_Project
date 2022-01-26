@@ -18,6 +18,8 @@ class MemberServiceTest {
     // 각각의 테스트코드는 독립적이어야 한다.
     // 이전의 코드는 MemoryMemberRepository memoryMemberRepository = new MemoryMemberRepository();로
     // 우리가 테스트하는 MemberService와 각각 다른 객체를 사용하였는데, 이러면 문제가 생길 수 있다고 한다.
+    // 현재는 store 변수가 static이라 객체가 달라도 클래스에 붙어서 공유할 수 있지만,
+    // static이 아닐 경우 각각 DB가 달라지는 등 테스트가 정확한 결과를 반환하지 못하게 할 수도 있다.
     // 따라서 테스트코드에서 사용하는 MemoryMemberRepository 객체와 MemberService에서 사용하는 객체가 동일해야 한다.
     // 그러기 위해서 BeforeEach 메서드를 정의해서 외부에서 객체를 생성하는 것이다.
     @BeforeEach

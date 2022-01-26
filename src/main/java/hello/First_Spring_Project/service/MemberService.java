@@ -3,6 +3,8 @@ package hello.First_Spring_Project.service;
 import hello.First_Spring_Project.domain.Member;
 import hello.First_Spring_Project.repository.MemberRepository;
 import hello.First_Spring_Project.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,11 +12,20 @@ import java.util.Optional;
 // 서비스의 경우는 조금 더 비즈니스 용어를 많이 쓴다고 한다.
 // 그래야 기획자가 "회원가입 쪽 이상해요"할때 일대일로 매칭돼서 찾을 수 있기 때문이라고 한다.
 // ** ctrl + shift + t 단축키를 이용하여 현재 클래스와 매칭되는 테스트 클래스를 바로 만들 수 있다. **
+
+//@Service 어노테이션이 없으면 스프링에서 "순수한 자바 클래스 파일"인 MemberService를 인식하지 못한다.
+//따라서 어노테이션이 필요하다.
+
+@Service
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    // 외부에서 이렇게 값을 받아서 동작하게 하는 것을 D.I라고 한다.
+    // 외부에서 이렇게 값을 받아서 동작하게 하는 것을 D.I(의존성 주입)라고 한다.
     // 이렇게 하는 이유는 테스트 코드에서 같은 memberRepository를 쓰기 위함이라고 한다.
+
+    // 동재 말로는 MemberRepository (인터페이스) 라고 써도 자동으로 구현체가 딸려온다고 한다.
+    // 그래서 같은 인터페이스에 대해 구현체가 바뀌어도 유지보수가 굉장히 편리하다고 한다.
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

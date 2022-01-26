@@ -1,9 +1,12 @@
 package hello.First_Spring_Project.repository;
 
 import hello.First_Spring_Project.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+// MemberService와 마찬가지로 스프링에서 인식하기 위해 @Repository 어노테이션을 달아준다.
+@Repository
 public class MemoryMemberRepository implements MemberRepository{
 
     private static Map<Long, Member> store = new HashMap<>();
