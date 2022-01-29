@@ -16,7 +16,7 @@ import java.util.Optional;
 //@Service 어노테이션이 없으면 스프링에서 "순수한 자바 클래스 파일"인 MemberService를 인식하지 못한다.
 //따라서 어노테이션이 필요하다.
 
-@Service
+
 public class MemberService {
     private final MemberRepository memberRepository;
 
@@ -25,7 +25,7 @@ public class MemberService {
 
     // 동재 말로는 MemberRepository (인터페이스) 라고 써도 자동으로 구현체가 딸려온다고 한다.
     // 그래서 같은 인터페이스에 대해 구현체가 바뀌어도 유지보수가 굉장히 편리하다고 한다.
-    @Autowired
+
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
