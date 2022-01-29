@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+  <!-- action 뒤의 URL로 post 방식으로 값을 넘겨준다. 그것이 PostMapping을 쓰는 이유. -->
+  <form action="/members/new" method="post">
+    <div class="form-group">
+      <label for="name">이름</label>
+      <!-- 여기서 값의 입력이 이루어지는데, name="name"부분이 중요하다. -->
+      <!-- input 값이 서버로 넘어올 때 key 값으로 이 "name"을 가지고 온다. -->
+      <input type="text" id="name" name="name" placeholder="이름을
+입력하세요">
+    </div>
+    <button type="submit">등록</button>
+  </form>
+</div> <!-- /container -->
+</body>
+</html>

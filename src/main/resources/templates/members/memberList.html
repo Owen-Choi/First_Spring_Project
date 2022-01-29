@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>이름</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!-- ${model}로 감싸진 코드는 모델 안에 있는 값을 꺼내는 역할을 수행한다. -->
+      <!-- th:each는 타임리프 문법으로 루프를 도는 기능이라고 한다. 이 html부터 본격적으로 타임리프가 활용된다. -->
+      <tr th:each="member : ${members}">
+        <td th:text="${member.id}"></td>
+        <td th:text="${member.name}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div> <!-- /container -->
+</body>
+</html>
