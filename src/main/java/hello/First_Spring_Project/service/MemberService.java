@@ -47,12 +47,14 @@ public class MemberService {
         // 자매품으로는 result.orElseGet()이 있다.
         // 또한 굳이 result로 저장 안하고 memberRepository.findByName(member.getName())에서 바로 사용해도 된다.
         result.ifPresent(m -> {
-                throw new IllegalStateException("이미 존재하는 회원입니다.");
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
         });
     }
+
     public List<Member> findMembers() {
         return memberRepository.findAll();
     }
+
     public Optional<Member> findOne(long memberId) {
         return memberRepository.findById(memberId);
     }

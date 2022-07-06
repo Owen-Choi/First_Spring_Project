@@ -33,6 +33,8 @@ public class MemoryMemberRepository implements MemberRepository{
 
     @Override
     public List<Member> findAll() {
+        // store의 value 들을 list로 반환해줌.
+        // 실무에서는 iteration 돌리기도 편하고 해서 List를 많이 쓴다고 한다.
         return new ArrayList<>(store.values());
     }
 
