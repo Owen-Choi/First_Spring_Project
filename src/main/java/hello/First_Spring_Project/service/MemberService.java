@@ -5,6 +5,7 @@ import hello.First_Spring_Project.repository.MemberRepository;
 import hello.First_Spring_Project.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,9 +15,11 @@ import java.util.Optional;
 // ** ctrl + shift + t 단축키를 이용하여 현재 클래스와 매칭되는 테스트 클래스를 바로 만들 수 있다. **
 
 //@Service 어노테이션이 없으면 스프링에서 "순수한 자바 클래스 파일"인 MemberService를 인식하지 못한다.
-//따라서 어노테이션이 필요하다.
+//따라서 어노테이션이 필요하다. => 이건 config 파일 없는 수동 빈 등록같은 느낌.
 
+// JPA는 join 같은 연산이 모두 트랜잭션 안에서 실행이 된다. 따라서 @Transactional 애노테이션이 필요하다.
 
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
 
